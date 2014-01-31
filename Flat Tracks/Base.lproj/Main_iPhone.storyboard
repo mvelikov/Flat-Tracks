@@ -12,14 +12,14 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="BeR-wC-20n" kind="relationship" relationship="rootViewController" id="eV9-Uv-hNf"/>
+                        <segue destination="pGg-6v-bdr" kind="relationship" relationship="rootViewController" id="hGi-ZF-eAi"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eq9-QA-ai8" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1" y="64"/>
         </scene>
-        <!--View Controller - Flat Tracks-->
+        <!--View Controller - Flat Tracking-->
         <scene sceneID="hBF-nh-UJ1">
             <objects>
                 <viewController id="BeR-wC-20n" sceneMemberID="viewController">
@@ -38,14 +38,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Flat Tracks" id="4rV-O8-Ot4">
-                        <barButtonItem key="leftBarButtonItem" image="list.png" id="D77-LT-QHi"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="play" id="K0r-hx-95j"/>
+                    <navigationItem key="navigationItem" title="Flat Tracking" id="4rV-O8-Ot4">
+                        <barButtonItem key="backBarButtonItem" title="Tracks" id="Sh2-CT-IcE"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="K0r-hx-95j"/>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YpO-NU-9jA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="451" y="64"/>
+            <point key="canvasLocation" x="894" y="-218"/>
         </scene>
         <!--Master View Controller - Master-->
         <scene sceneID="VgW-fR-Quf">
@@ -57,7 +57,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="2pz-XF-uhl" style="IBUITableViewCellStyleDefault" id="m0d-ak-lc9">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m0d-ak-lc9" id="hWe-8w-glU">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -74,7 +74,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <segue destination="Ah7-4n-0Wa" kind="push" identifier="showDetail" id="jUr-3t-vfg"/>
+                                    <segue destination="BeR-wC-20n" kind="push" id="Bm5-SI-tYm"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -84,11 +84,13 @@
                             <outlet property="delegate" destination="pGg-6v-bdr" id="Y6K-Cp-Qkv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Master" id="tQt-TN-PWz"/>
+                    <navigationItem key="navigationItem" title="Flat Tracks" id="tQt-TN-PWz">
+                        <barButtonItem key="rightBarButtonItem" systemItem="play" id="xLk-7c-IDy"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Cn-md-YlS" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="899" y="64"/>
+            <point key="canvasLocation" x="463" y="-218"/>
         </scene>
         <!--Detail View Controller - Detail-->
         <scene sceneID="Cn3-H9-jdl">
@@ -124,12 +126,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrm-kH-fPn" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1342" y="64"/>
+            <point key="canvasLocation" x="468" y="375"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="list.png" width="30" height="30"/>
-    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
