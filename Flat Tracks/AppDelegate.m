@@ -28,8 +28,10 @@
         MasterViewController *controller = (MasterViewController *)masterNavigationController.topViewController;
         controller.managedObjectContext = self.managedObjectContext;
     } else {
-        UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-        MasterViewController *controller = (MasterViewController *)navigationController.topViewController;
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+        
+//        UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+        MasterViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"tracksListController"];
         controller.managedObjectContext = self.managedObjectContext;
     }
     return YES;
