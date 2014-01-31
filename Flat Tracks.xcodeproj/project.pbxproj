@@ -26,6 +26,9 @@
 		0C1D9E9E189C1143001EF7C0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C1D9E76189C1143001EF7C0 /* CoreData.framework */; };
 		0C1D9EA6189C1143001EF7C0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0C1D9EA4189C1143001EF7C0 /* InfoPlist.strings */; };
 		0C1D9EA8189C1143001EF7C0 /* Flat_TracksTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D9EA7189C1143001EF7C0 /* Flat_TracksTests.m */; };
+		0C1D9EB2189C133B001EF7C0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C1D9EB1189C133B001EF7C0 /* MapKit.framework */; };
+		0C1D9EB9189C2252001EF7C0 /* list.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C1D9EB7189C2252001EF7C0 /* list.png */; };
+		0C1D9EBA189C2252001EF7C0 /* list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C1D9EB8189C2252001EF7C0 /* list@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +66,9 @@
 		0C1D9EA3189C1143001EF7C0 /* Flat TracksTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Flat TracksTests-Info.plist"; sourceTree = "<group>"; };
 		0C1D9EA5189C1143001EF7C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0C1D9EA7189C1143001EF7C0 /* Flat_TracksTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Flat_TracksTests.m; sourceTree = "<group>"; };
+		0C1D9EB1189C133B001EF7C0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		0C1D9EB7189C2252001EF7C0 /* list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list.png; sourceTree = "<group>"; };
+		0C1D9EB8189C2252001EF7C0 /* list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C1D9EB2189C133B001EF7C0 /* MapKit.framework in Frameworks */,
 				0C1D9E73189C1143001EF7C0 /* CoreGraphics.framework in Frameworks */,
 				0C1D9E77189C1143001EF7C0 /* CoreData.framework in Frameworks */,
 				0C1D9E75189C1143001EF7C0 /* UIKit.framework in Frameworks */,
@@ -113,6 +120,7 @@
 		0C1D9E6F189C1143001EF7C0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0C1D9EB1189C133B001EF7C0 /* MapKit.framework */,
 				0C1D9E70189C1143001EF7C0 /* Foundation.framework */,
 				0C1D9E72189C1143001EF7C0 /* CoreGraphics.framework */,
 				0C1D9E74189C1143001EF7C0 /* UIKit.framework */,
@@ -143,6 +151,8 @@
 		0C1D9E79189C1143001EF7C0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0C1D9EB7189C2252001EF7C0 /* list.png */,
+				0C1D9EB8189C2252001EF7C0 /* list@2x.png */,
 				0C1D9E7A189C1143001EF7C0 /* Flat Tracks-Info.plist */,
 				0C1D9E7B189C1143001EF7C0 /* InfoPlist.strings */,
 				0C1D9E7E189C1143001EF7C0 /* main.m */,
@@ -246,8 +256,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C1D9E89189C1143001EF7C0 /* Main_iPad.storyboard in Resources */,
+				0C1D9EB9189C2252001EF7C0 /* list.png in Resources */,
 				0C1D9E94189C1143001EF7C0 /* Images.xcassets in Resources */,
 				0C1D9E86189C1143001EF7C0 /* Main_iPhone.storyboard in Resources */,
+				0C1D9EBA189C2252001EF7C0 /* list@2x.png in Resources */,
 				0C1D9E7D189C1143001EF7C0 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,6 +424,7 @@
 				GCC_PREFIX_HEADER = "Flat Tracks/Flat Tracks-Prefix.pch";
 				INFOPLIST_FILE = "Flat Tracks/Flat Tracks-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -425,6 +438,7 @@
 				GCC_PREFIX_HEADER = "Flat Tracks/Flat Tracks-Prefix.pch";
 				INFOPLIST_FILE = "Flat Tracks/Flat Tracks-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
