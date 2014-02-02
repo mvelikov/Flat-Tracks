@@ -37,9 +37,6 @@
     return _sharedInstance;
 }
 
-- (void) setFetchedResultsController:(NSFetchedResultsController *)fetchedResultsController {
-    [persistencyManager setFetchedResultsController:fetchedResultsController];
-}
 - (void) setManagedObjectContext:(NSManagedObjectContext *)managedObjectContext {
     [persistencyManager setManagedObjectContext:managedObjectContext];
 }
