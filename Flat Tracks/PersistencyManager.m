@@ -7,13 +7,15 @@
 //
 
 #import "PersistencyManager.h"
+#import "MasterViewController.h"
 
 @interface PersistencyManager() {
-    Route* currentRoute;
+    MVRoute* currentRoute;
     NSMutableArray *currentTrackPoints;
 }
 
 @end
 @implementation PersistencyManager
+
 
 @end

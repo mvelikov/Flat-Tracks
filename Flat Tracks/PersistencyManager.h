@@ -8,21 +8,21 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "Route.h"
-#import "Point.h"
+#import "MVRoute.h"
+#import "MVPoint.h"
 
 @interface PersistencyManager : NSObject
 
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+//@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 - (NSArray*) getRoutes;
 - (NSDictionary*) getARouteWithAllPoints;
 - (void) addRouteWithTitle: (NSString*)title;
 - (void) deleteRouteAtIndex: (int)index;
-- (void) endRoute: (Route*)route;
+- (void) endRoute: (MVRoute*)route;
 
-- (NSArray*) getPointsForRoute: (Route*)route;
-- (void) addPointWithLatitude: (double)latitude andLongitude: (double)longitude ForRoute: (Route*)route;
+- (NSArray*) getPointsForRoute: (MVRoute*)route;
+- (void) addPointWithLatitude: (double)latitude andLongitude: (double)longitude ForRoute: (MVRoute*)route;
 - (void) addPointWithLatitude:(double)latitude andLongitude:(double)longitude;
 @end
