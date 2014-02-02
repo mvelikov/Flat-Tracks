@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 
 #import "MasterViewController.h"
-#import "LibraryAPI.h"
 
 @implementation AppDelegate
 
@@ -33,8 +32,6 @@
         MasterViewController *controller = (MasterViewController *)navigationController.topViewController;
         controller.managedObjectContext = self.managedObjectContext;
     }
-    LibraryAPI* libraryAPI = [LibraryAPI sharedInstance];
-    [libraryAPI setManagedObjectContext:self.managedObjectContext];
     
     return YES;
 }
