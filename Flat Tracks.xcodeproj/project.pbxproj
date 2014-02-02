@@ -31,8 +31,8 @@
 		0C1D9EBA189C2252001EF7C0 /* list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C1D9EB8189C2252001EF7C0 /* list@2x.png */; };
 		0C1D9EBE189D7944001EF7C0 /* LibraryAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D9EBD189D7944001EF7C0 /* LibraryAPI.m */; };
 		0C1D9EC1189D7961001EF7C0 /* PersistencyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D9EC0189D7961001EF7C0 /* PersistencyManager.m */; };
-		0C1D9EC4189D7CE9001EF7C0 /* Point.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D9EC3189D7CE9001EF7C0 /* Point.m */; };
-		0C1D9EC7189D7CEA001EF7C0 /* Route.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D9EC6189D7CEA001EF7C0 /* Route.m */; };
+		0C1D9EC4189D7CE9001EF7C0 /* MVPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D9EC3189D7CE9001EF7C0 /* MVPoint.m */; };
+		0C1D9EC7189D7CEA001EF7C0 /* MVRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D9EC6189D7CEA001EF7C0 /* MVRoute.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,10 +77,10 @@
 		0C1D9EBD189D7944001EF7C0 /* LibraryAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryAPI.m; sourceTree = "<group>"; };
 		0C1D9EBF189D7961001EF7C0 /* PersistencyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersistencyManager.h; sourceTree = "<group>"; };
 		0C1D9EC0189D7961001EF7C0 /* PersistencyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistencyManager.m; sourceTree = "<group>"; };
-		0C1D9EC2189D7CE9001EF7C0 /* Point.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Point.h; sourceTree = "<group>"; };
-		0C1D9EC3189D7CE9001EF7C0 /* Point.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Point.m; sourceTree = "<group>"; };
-		0C1D9EC5189D7CEA001EF7C0 /* Route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Route.h; sourceTree = "<group>"; };
-		0C1D9EC6189D7CEA001EF7C0 /* Route.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Route.m; sourceTree = "<group>"; };
+		0C1D9EC2189D7CE9001EF7C0 /* MVPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVPoint.h; sourceTree = "<group>"; };
+		0C1D9EC3189D7CE9001EF7C0 /* MVPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVPoint.m; sourceTree = "<group>"; };
+		0C1D9EC5189D7CEA001EF7C0 /* MVRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVRoute.h; sourceTree = "<group>"; };
+		0C1D9EC6189D7CEA001EF7C0 /* MVRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVRoute.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,10 +204,10 @@
 		0C1D9EC8189D7CF2001EF7C0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				0C1D9EC5189D7CEA001EF7C0 /* Route.h */,
-				0C1D9EC6189D7CEA001EF7C0 /* Route.m */,
-				0C1D9EC2189D7CE9001EF7C0 /* Point.h */,
-				0C1D9EC3189D7CE9001EF7C0 /* Point.m */,
+				0C1D9EC5189D7CEA001EF7C0 /* MVRoute.h */,
+				0C1D9EC6189D7CEA001EF7C0 /* MVRoute.m */,
+				0C1D9EC2189D7CE9001EF7C0 /* MVPoint.h */,
+				0C1D9EC3189D7CE9001EF7C0 /* MVPoint.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -326,9 +326,9 @@
 				0C1D9EBE189D7944001EF7C0 /* LibraryAPI.m in Sources */,
 				0C1D9E92189C1143001EF7C0 /* DetailViewController.m in Sources */,
 				0C1D9E8F189C1143001EF7C0 /* MasterViewController.m in Sources */,
-				0C1D9EC7189D7CEA001EF7C0 /* Route.m in Sources */,
+				0C1D9EC7189D7CEA001EF7C0 /* MVRoute.m in Sources */,
 				0C1D9E8C189C1143001EF7C0 /* Flat_Tracks.xcdatamodeld in Sources */,
-				0C1D9EC4189D7CE9001EF7C0 /* Point.m in Sources */,
+				0C1D9EC4189D7CE9001EF7C0 /* MVPoint.m in Sources */,
 				0C1D9E83189C1143001EF7C0 /* AppDelegate.m in Sources */,
 				0C1D9E7F189C1143001EF7C0 /* main.m in Sources */,
 				0C1D9EC1189D7961001EF7C0 /* PersistencyManager.m in Sources */,
@@ -552,6 +552,7 @@
 				0C1D9EAD189C1143001EF7C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0C1D9EAE189C1143001EF7C0 /* Build configuration list for PBXNativeTarget "Flat TracksTests" */ = {
 			isa = XCConfigurationList;
@@ -560,6 +561,7 @@
 				0C1D9EB0189C1143001EF7C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

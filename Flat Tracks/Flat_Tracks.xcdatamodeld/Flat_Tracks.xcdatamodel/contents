@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B42" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Point" representedClassName="Point" syncable="YES">
-        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="timeStamp" optional="YES" attributeType="Date" syncable="YES"/>
-        <relationship name="route" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Route" inverseName="points" inverseEntity="Route" syncable="YES"/>
-    </entity>
-    <entity name="Route" representedClassName="Route">
+    <entity name="MVRoute" representedClassName="MVRoute">
         <attribute name="end" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="start" optional="YES" attributeType="Date">
             <userInfo/>
@@ -15,8 +9,14 @@
         <relationship name="points" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Point" inverseName="route" inverseEntity="Point" syncable="YES"/>
         <userInfo/>
     </entity>
+    <entity name="Point" representedClassName="Point" syncable="YES">
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="timeStamp" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="route" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MVRoute" inverseName="points" inverseEntity="MVRoute" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Route" positionX="160" positionY="192" width="128" height="105"/>
-        <element name="Point" positionX="439" positionY="237" width="128" height="105"/>
+        <element name="Point" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="MVRoute" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>
