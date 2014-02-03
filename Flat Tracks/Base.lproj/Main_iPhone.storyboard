@@ -40,10 +40,15 @@
                     </view>
                     <navigationItem key="navigationItem" title="Flat Tracking" id="4rV-O8-Ot4">
                         <barButtonItem key="backBarButtonItem" title="Tracks" id="Sh2-CT-IcE"/>
-                        <barButtonItem key="rightBarButtonItem" title="Start" id="K0r-hx-95j"/>
+                        <barButtonItem key="rightBarButtonItem" title="Start" id="K0r-hx-95j">
+                            <connections>
+                                <action selector="startButtonTapped:" destination="BeR-wC-20n" id="nIP-7o-mw7"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="bOf-jd-Hqj" id="EeG-J5-jje"/>
+                        <outlet property="startButton" destination="K0r-hx-95j" id="6i5-mq-FPP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YpO-NU-9jA" userLabel="First Responder" sceneMemberID="firstResponder"/>
