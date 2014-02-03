@@ -31,6 +31,7 @@
 		0C1D9EBA189C2252001EF7C0 /* list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C1D9EB8189C2252001EF7C0 /* list@2x.png */; };
 		0C1D9EC4189D7CE9001EF7C0 /* MVPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D9EC3189D7CE9001EF7C0 /* MVPoint.m */; };
 		0C1D9EC7189D7CEA001EF7C0 /* MVRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D9EC6189D7CEA001EF7C0 /* MVRoute.m */; };
+		0C1D9ECC18A01371001EF7C0 /* MVLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D9ECB18A01371001EF7C0 /* MVLocation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,8 @@
 		0C1D9EC3189D7CE9001EF7C0 /* MVPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVPoint.m; sourceTree = "<group>"; };
 		0C1D9EC5189D7CEA001EF7C0 /* MVRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVRoute.h; sourceTree = "<group>"; };
 		0C1D9EC6189D7CEA001EF7C0 /* MVRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVRoute.m; sourceTree = "<group>"; };
+		0C1D9ECA18A01371001EF7C0 /* MVLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVLocation.h; sourceTree = "<group>"; };
+		0C1D9ECB18A01371001EF7C0 /* MVLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVLocation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +151,8 @@
 				0C1D9E93189C1143001EF7C0 /* Images.xcassets */,
 				0C1D9E8A189C1143001EF7C0 /* Flat_Tracks.xcdatamodeld */,
 				0C1D9E79189C1143001EF7C0 /* Supporting Files */,
+				0C1D9ECA18A01371001EF7C0 /* MVLocation.h */,
+				0C1D9ECB18A01371001EF7C0 /* MVLocation.m */,
 			);
 			path = "Flat Tracks";
 			sourceTree = "<group>";
@@ -308,6 +313,7 @@
 				0C1D9E92189C1143001EF7C0 /* DetailViewController.m in Sources */,
 				0C1D9E8F189C1143001EF7C0 /* MasterViewController.m in Sources */,
 				0C1D9EC7189D7CEA001EF7C0 /* MVRoute.m in Sources */,
+				0C1D9ECC18A01371001EF7C0 /* MVLocation.m in Sources */,
 				0C1D9E8C189C1143001EF7C0 /* Flat_Tracks.xcdatamodeld in Sources */,
 				0C1D9EC4189D7CE9001EF7C0 /* MVPoint.m in Sources */,
 				0C1D9E83189C1143001EF7C0 /* AppDelegate.m in Sources */,

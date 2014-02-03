@@ -19,10 +19,10 @@
             </objects>
             <point key="canvasLocation" x="-1" y="64"/>
         </scene>
-        <!--View Controller - Flat Tracking-->
+        <!--Detail View Controller - Flat Tracking-->
         <scene sceneID="hBF-nh-UJ1">
             <objects>
-                <viewController id="BeR-wC-20n" sceneMemberID="viewController">
+                <viewController id="BeR-wC-20n" customClass="DetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fkV-6Y-9bk"/>
                         <viewControllerLayoutGuide type="bottom" id="o29-9Y-RTj"/>
@@ -42,6 +42,9 @@
                         <barButtonItem key="backBarButtonItem" title="Tracks" id="Sh2-CT-IcE"/>
                         <barButtonItem key="rightBarButtonItem" title="Start" id="K0r-hx-95j"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="bOf-jd-Hqj" id="EeG-J5-jje"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YpO-NU-9jA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 #import "MVRoute.h"
 
-@interface DetailViewController : UIViewController <UISplitViewControllerDelegate>
+@interface DetailViewController : UIViewController <UISplitViewControllerDelegate, CLLocationManagerDelegate>
 
 @property (strong, nonatomic) id detailItem;
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 @property (weak, nonatomic) MVRoute *route;
 @property (weak, nonatomic) NSManagedObjectContext *managedObjectContext;

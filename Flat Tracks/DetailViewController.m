@@ -7,14 +7,19 @@
 //
 
 #import "DetailViewController.h"
+#import "MVLocation.h"
+#define METERS_PER_MILE 1609.344
 
 @interface DetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
+@property CLLocationManager* locationManager;
+@property CLLocation* currentLocation;
 - (void)configureView;
 @end
 
 @implementation DetailViewController
 
+@synthesize mapView, currentLocation, locationManager;
 #pragma mark - Managing the detail item
 
 - (void)setDetailItem:(id)newDetailItem
@@ -35,14 +40,72 @@
 {
     // Update the user interface for the detail item.
 
-    if (self.detailItem) {
+    if (self.route) {
+        [mapView setShowsUserLocation:YES];
 //        self.detailDescriptionLabel.text = [[self.detailItem valueForKey:@"timeStamp"] description];
     }
 }
 
+-(void)startStandardLocationService {
+    if (nil == locationManager) {
+        locationManager = [[CLLocationManager alloc] init];
+    }
+    
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
+    
+    locationManager.distanceFilter = 500;
+    
+    [locationManager startUpdatingLocation];
+    
+}
+
+#pragma mark - CLLocationManagerDelegate protocol implementation
+-(void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    currentLocation = [locations lastObject];
+    CLLocationCoordinate2D zoomLocation;
+    zoomLocation.latitude = currentLocation.coordinate.latitude;
+    zoomLocation.longitude = currentLocation.coordinate.longitude;
+    
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, METERS_PER_MILE,  METERS_PER_MILE);
+
+    
+    MVLocation *annotation = [[MVLocation alloc] initWithTitle:@"" andSubtitle:@"" andCoordinate:zoomLocation];
+    
+    [mapView addAnnotation:annotation];
+    [mapView setRegion:viewRegion animated:YES];
+    [locationManager stopUpdatingLocation];
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapKitView viewForAnnotation:(id <MKAnnotation>)annotation {
+    static NSString *identifier = @"MVLocation";
+    if ([annotation isKindOfClass:[MVLocation class]]) {
+        
+        MKAnnotationView *annotationView = (MKAnnotationView *) [mapKitView dequeueReusableAnnotationViewWithIdentifier:identifier];
+        
+        if (annotationView == nil) {
+            annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+            annotationView.enabled = YES;
+            annotationView.canShowCallout = YES;
+
+        } else {
+            annotationView.annotation = annotation;
+        }
+        
+        return annotationView;
+    }
+    
+    return nil;
+}
+
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    currentLocation = [[CLLocation alloc] init];
+    
+    [self startStandardLocationService];
 	// Do any additional setup after loading the view, typically from a nib.
     [self configureView];
 }
