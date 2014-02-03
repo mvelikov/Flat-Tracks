@@ -19,7 +19,7 @@
 
 @implementation DetailViewController
 
-@synthesize mapView, currentLocation, locationManager;
+@synthesize mapView, currentLocation, locationManager, startButton, route;
 #pragma mark - Managing the detail item
 
 - (void)setDetailItem:(id)newDetailItem
@@ -132,4 +132,26 @@
     self.masterPopoverController = nil;
 }
 
+- (IBAction)startButtonTapped:(id)sender {
+    UIBarButtonItem *stopButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(stopButtonTapped:)];
+    self.navigationItem.rightBarButtonItem = stopButton;
+    
+    [route setValue:[NSDate date] forKey:@"start"];
+    
+    NSError *error = nil;
+    if (![_managedObjectContext save:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+
+}
+
+- (IBAction)stopButtonTapped:(id)sender {
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareButtonTapped:)];
+    self.navigationItem.rightBarButtonItem = shareButton;
+}
+
+- (IBAction)shareButtonTapped:(id)sender {
+    
+}
 @end

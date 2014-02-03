@@ -14,7 +14,11 @@
 
 @property (strong, nonatomic) id detailItem;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *startButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *stopButton;
 
 @property (weak, nonatomic) MVRoute *route;
 @property (weak, nonatomic) NSManagedObjectContext *managedObjectContext;
+- (IBAction)startButtonTapped:(id)sender;
+- (IBAction)stopButtonTapped:(id)sender;
 @end
