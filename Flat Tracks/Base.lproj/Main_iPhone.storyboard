@@ -82,7 +82,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <segue destination="BeR-wC-20n" kind="push" id="Bm5-SI-tYm"/>
+                                    <segue destination="BeR-wC-20n" kind="push" identifier="showDetail" id="Bm5-SI-tYm"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

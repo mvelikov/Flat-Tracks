@@ -70,9 +70,9 @@
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, METERS_PER_MILE,  METERS_PER_MILE);
 
     
-    MVLocation *annotation = [[MVLocation alloc] initWithTitle:@"" andSubtitle:@"" andCoordinate:zoomLocation];
+//    MVLocation *annotation = [[MVLocation alloc] initWithTitle:@"" andSubtitle:@"" andCoordinate:zoomLocation];
     
-    [mapView addAnnotation:annotation];
+//    [mapView addAnnotation:annotation];
     [mapView setRegion:viewRegion animated:YES];
     [locationManager stopUpdatingLocation];
 }
