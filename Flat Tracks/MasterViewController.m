@@ -158,6 +158,7 @@
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         MVRoute *route = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+        [[segue destinationViewController] setManagedObjectContext:self.managedObjectContext];
         [[segue destinationViewController] setRoute:route];
     }
 }
