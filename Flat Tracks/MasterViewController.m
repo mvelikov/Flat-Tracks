@@ -79,7 +79,8 @@
         
         // If appropriate, configure the new managed object.
         // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
-        [newManagedObject setValue:titleField.text forKey:@"name"];
+        [newManagedObject setValue:titleField.text forKey:@"title"];
+
         [titleField setText:@""];
         // Save the context.
         NSError *error = nil;
@@ -156,8 +157,8 @@
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-        [[segue destinationViewController] setDetailItem:object];
+        MVRoute *route = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+        [[segue destinationViewController] setRoute:route];
     }
 }
 
@@ -263,7 +264,7 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [[object valueForKey:@"timeStamp"] description];
+    cell.textLabel.text = [[object valueForKey:@"title"] description];
 }
 
 @end

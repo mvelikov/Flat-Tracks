@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MVRoute.h"
 
 @interface DetailViewController : UIViewController <UISplitViewControllerDelegate>
 
 @property (strong, nonatomic) id detailItem;
 
-@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+@property (weak, nonatomic) MVRoute *route;
+@property (weak, nonatomic) NSManagedObjectContext *managedObjectContext;
 @end
