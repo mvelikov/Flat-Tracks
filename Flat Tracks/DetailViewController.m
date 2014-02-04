@@ -65,16 +65,24 @@
 -(void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     currentLocation = [locations lastObject];
     CLLocationCoordinate2D zoomLocation;
-    zoomLocation.latitude = currentLocation.coordinate.latitude + rand() % 20;
-    zoomLocation.longitude = currentLocation.coordinate.longitude + rand() % 20;
-    NSLog(@"%f %f", zoomLocation.latitude, zoomLocation.longitude);
+    zoomLocation.latitude = currentLocation.coordinate.latitude;
+    zoomLocation.longitude = currentLocation.coordinate.longitude; //  + rand() % 2
+    
+    MVPoint *point = [NSEntityDescription insertNewObjectForEntityForName:@"Point" inManagedObjectContext:self.managedObjectContext];
+    
+    [point setValue:[NSNumber numberWithDouble:zoomLocation.latitude] forKey:@"latitude"];
+    [point setValue:[NSNumber numberWithDouble:zoomLocation.longitude] forKey:@"longitude"];
+    [point setValue:[NSDate date] forKey:@"timeStamp"];
+    
+    [route addPointsObject:point];
+//    NSLog(@"%f %f", zoomLocation.latitude, zoomLocation.longitude);
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 100 * METERS_PER_MILE,  100 * METERS_PER_MILE);
 
     
     MVLocation *annotation = [[MVLocation alloc] initWithTitle:[NSString stringWithFormat:@"%@", [NSDate date] ] andSubtitle:@"" andCoordinate:zoomLocation];
     
     [mapView addAnnotation:annotation];
-//    [mapView setRegion:viewRegion animated:YES];
+    [mapView setRegion:viewRegion animated:YES];
     [locationManager stopUpdatingLocation];
 }
 
@@ -150,13 +158,17 @@
 }
 
 - (void) updateLocation:(NSTimer*) timer {
-    NSLog(@"time");
+
     [locationManager startUpdatingLocation];
 }
 
 - (IBAction)stopButtonTapped:(id)sender {
     UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareButtonTapped:)];
     self.navigationItem.rightBarButtonItem = shareButton;
+    
+    [timer invalidate];
+    
+    [route setValue:[NSDate date] forKey:@"end"];
 }
 
 - (IBAction)shareButtonTapped:(id)sender {

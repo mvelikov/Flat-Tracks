@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "MVRoute.h"
+#import "MVPoint.h"
 
 @interface DetailViewController : UIViewController <UISplitViewControllerDelegate, CLLocationManagerDelegate>
 
