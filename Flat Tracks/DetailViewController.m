@@ -14,12 +14,13 @@
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
 @property CLLocationManager* locationManager;
 @property CLLocation* currentLocation;
+@property NSTimer* timer;
 - (void)configureView;
 @end
 
 @implementation DetailViewController
 
-@synthesize mapView, currentLocation, locationManager, startButton, route;
+@synthesize mapView, currentLocation, locationManager, startButton, route, timer;
 #pragma mark - Managing the detail item
 
 - (void)setDetailItem:(id)newDetailItem
@@ -64,16 +65,16 @@
 -(void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     currentLocation = [locations lastObject];
     CLLocationCoordinate2D zoomLocation;
-    zoomLocation.latitude = currentLocation.coordinate.latitude;
-    zoomLocation.longitude = currentLocation.coordinate.longitude;
-    
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, METERS_PER_MILE,  METERS_PER_MILE);
+    zoomLocation.latitude = currentLocation.coordinate.latitude + rand() % 20;
+    zoomLocation.longitude = currentLocation.coordinate.longitude + rand() % 20;
+    NSLog(@"%f %f", zoomLocation.latitude, zoomLocation.longitude);
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 100 * METERS_PER_MILE,  100 * METERS_PER_MILE);
 
     
-//    MVLocation *annotation = [[MVLocation alloc] initWithTitle:@"" andSubtitle:@"" andCoordinate:zoomLocation];
+    MVLocation *annotation = [[MVLocation alloc] initWithTitle:[NSString stringWithFormat:@"%@", [NSDate date] ] andSubtitle:@"" andCoordinate:zoomLocation];
     
-//    [mapView addAnnotation:annotation];
-    [mapView setRegion:viewRegion animated:YES];
+    [mapView addAnnotation:annotation];
+//    [mapView setRegion:viewRegion animated:YES];
     [locationManager stopUpdatingLocation];
 }
 
@@ -143,7 +144,14 @@
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
+    
+    timer = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(updateLocation:) userInfo:nil repeats:YES];
 
+}
+
+- (void) updateLocation:(NSTimer*) timer {
+    NSLog(@"time");
+    [locationManager startUpdatingLocation];
 }
 
 - (IBAction)stopButtonTapped:(id)sender {
