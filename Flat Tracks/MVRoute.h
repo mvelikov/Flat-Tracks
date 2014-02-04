@@ -21,8 +21,8 @@
 
 @interface MVRoute (CoreDataGeneratedAccessors)
 
-- (void)addPointsObject:(Point *)value;
-- (void)removePointsObject:(Point *)value;
+- (void)addPointsObject:(MVPoint *)value;
+- (void)removePointsObject:(MVPoint *)value;
 - (void)addPoints:(NSSet *)values;
 - (void)removePoints:(NSSet *)values;
 
