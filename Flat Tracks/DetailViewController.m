@@ -12,15 +12,16 @@
 
 @interface DetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
-@property CLLocationManager* locationManager;
-@property CLLocation* currentLocation;
-@property NSTimer* timer;
+@property (strong, nonatomic) CLLocationManager* locationManager;
+@property (strong, nonatomic) CLLocation* currentLocation;
+@property (assign, nonatomic) CLLocationCoordinate2D previousLocation;
+@property (weak, nonatomic) NSTimer* timer;
 - (void)configureView;
 @end
 
 @implementation DetailViewController
 
-@synthesize mapView, currentLocation, locationManager, startButton, route, timer;
+@synthesize mapView, currentLocation, locationManager, startButton, route, timer, previousLocation;
 #pragma mark - Managing the detail item
 
 - (void)setDetailItem:(id)newDetailItem
@@ -37,6 +38,24 @@
     }        
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    currentLocation = [[CLLocation alloc] init];
+    mapView.delegate = self;
+    
+    [self addRoute];
+
+    CLLocationCoordinate2D zoomLocation;
+    zoomLocation.latitude = 38.3244;
+    zoomLocation.longitude = -121.424; //
+    MVLocation *annotation = [[MVLocation alloc] initWithTitle:[NSString stringWithFormat:@"%@", [NSDate date] ] andSubtitle:@"" andCoordinate:zoomLocation];
+    
+    [mapView addAnnotation:annotation];
+
+    [self configureView];
+}
+
 - (void)configureView
 {
     // Update the user interface for the detail item.
@@ -47,43 +66,47 @@
     }
 }
 
--(void)startStandardLocationService {
-    if (nil == locationManager) {
-        locationManager = [[CLLocationManager alloc] init];
+- (void)addRoute {
+    NSString *thePath = [[NSBundle mainBundle] pathForResource:@"EntranceToGoliathRoute" ofType:@"plist"];
+    NSArray *pointsArray = [NSArray arrayWithContentsOfFile:thePath];
+    
+    NSInteger pointsCount = pointsArray.count;
+    
+    CLLocationCoordinate2D pointsToUse[pointsCount];
+    
+    for(int i = 0; i < pointsCount; i++) {
+        CGPoint p = CGPointFromString(pointsArray[i]);
+        pointsToUse[i] = CLLocationCoordinate2DMake(p.x,p.y);
     }
     
-    locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
+    self.routeLine = [MKPolyline polylineWithCoordinates:pointsToUse count:pointsCount];
     
-    locationManager.distanceFilter = 500;
+    [mapView setVisibleMapRect:[self.routeLine boundingMapRect]]; //If you want the route to be visible
     
-    [locationManager startUpdatingLocation];
-    
+    [mapView addOverlay:self.routeLine];
+//    [self.mapView addOverlay:myPolyline];
 }
 
-#pragma mark - CLLocationManagerDelegate protocol implementation
--(void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    currentLocation = [locations lastObject];
-    CLLocationCoordinate2D zoomLocation;
-    zoomLocation.latitude = currentLocation.coordinate.latitude;
-    zoomLocation.longitude = currentLocation.coordinate.longitude; //  + rand() % 2
+#pragma MKMapViewDelegate
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
+{
+    if ([overlay isKindOfClass:MKPolygon.class]) {
+        MKPolylineRenderer *polygonView = [[MKPolylineRenderer alloc] initWithOverlay:overlay];
+        polygonView.strokeColor = [UIColor magentaColor];
+        
+        return polygonView;
+    } else if(overlay == self.routeLine) {
+        if(nil == self.routeLineView) {
+            self.routeLineView = [[MKPolylineRenderer alloc] initWithPolyline:self.routeLine];
+            self.routeLineView.fillColor = [UIColor redColor];
+            self.routeLineView.strokeColor = [UIColor redColor];
+            self.routeLineView.lineWidth = 3;
+        }
+        
+        return self.routeLineView;
+    }
     
-    MVPoint *point = [NSEntityDescription insertNewObjectForEntityForName:@"Point" inManagedObjectContext:self.managedObjectContext];
-    
-    [point setValue:[NSNumber numberWithDouble:zoomLocation.latitude] forKey:@"latitude"];
-    [point setValue:[NSNumber numberWithDouble:zoomLocation.longitude] forKey:@"longitude"];
-    [point setValue:[NSDate date] forKey:@"timeStamp"];
-    
-    [route addPointsObject:point];
-//    NSLog(@"%f %f", zoomLocation.latitude, zoomLocation.longitude);
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 100 * METERS_PER_MILE,  100 * METERS_PER_MILE);
-
-    
-    MVLocation *annotation = [[MVLocation alloc] initWithTitle:[NSString stringWithFormat:@"%@", [NSDate date] ] andSubtitle:@"" andCoordinate:zoomLocation];
-    
-    [mapView addAnnotation:annotation];
-    [mapView setRegion:viewRegion animated:YES];
-    [locationManager stopUpdatingLocation];
+    return nil;
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapKitView viewForAnnotation:(id <MKAnnotation>)annotation {
@@ -107,71 +130,9 @@
     return nil;
 }
 
-
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    currentLocation = [[CLLocation alloc] init];
-    
-    [self startStandardLocationService];
-	// Do any additional setup after loading the view, typically from a nib.
-    [self configureView];
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Split view
-
-- (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController
-{
-    barButtonItem.title = NSLocalizedString(@"Master", @"Master");
-    [self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
-    self.masterPopoverController = popoverController;
-}
-
-- (void)splitViewController:(UISplitViewController *)splitController willShowViewController:(UIViewController *)viewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
-{
-    // Called when the view is shown again in the split view, invalidating the button and popover controller.
-    [self.navigationItem setLeftBarButtonItem:nil animated:YES];
-    self.masterPopoverController = nil;
-}
-
-- (IBAction)startButtonTapped:(id)sender {
-    UIBarButtonItem *stopButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(stopButtonTapped:)];
-    self.navigationItem.rightBarButtonItem = stopButton;
-    
-    [route setValue:[NSDate date] forKey:@"start"];
-    
-    NSError *error = nil;
-    if (![_managedObjectContext save:&error]) {
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
-    
-    timer = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(updateLocation:) userInfo:nil repeats:YES];
-
-}
-
-- (void) updateLocation:(NSTimer*) timer {
-
-    [locationManager startUpdatingLocation];
-}
-
-- (IBAction)stopButtonTapped:(id)sender {
-    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareButtonTapped:)];
-    self.navigationItem.rightBarButtonItem = shareButton;
-    
-    [timer invalidate];
-    
-    [route setValue:[NSDate date] forKey:@"end"];
-}
-
-- (IBAction)shareButtonTapped:(id)sender {
-    
 }
 @end

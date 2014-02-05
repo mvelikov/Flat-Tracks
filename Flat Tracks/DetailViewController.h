@@ -11,15 +11,17 @@
 #import "MVRoute.h"
 #import "MVPoint.h"
 
-@interface DetailViewController : UIViewController <UISplitViewControllerDelegate, CLLocationManagerDelegate>
+@interface DetailViewController : UIViewController <UISplitViewControllerDelegate, CLLocationManagerDelegate, MKMapViewDelegate>
 
 @property (strong, nonatomic) id detailItem;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (nonatomic, retain) MKPolyline *routeLine; //your line
+@property (nonatomic, retain) MKPolylineRenderer *routeLineView; //overlay view
+
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *startButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *stopButton;
 
 @property (weak, nonatomic) MVRoute *route;
 @property (weak, nonatomic) NSManagedObjectContext *managedObjectContext;
-- (IBAction)startButtonTapped:(id)sender;
-- (IBAction)stopButtonTapped:(id)sender;
+
 @end

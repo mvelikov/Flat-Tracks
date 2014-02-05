@@ -32,6 +32,7 @@
 		0C1D9EC4189D7CE9001EF7C0 /* MVPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D9EC3189D7CE9001EF7C0 /* MVPoint.m */; };
 		0C1D9EC7189D7CEA001EF7C0 /* MVRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D9EC6189D7CEA001EF7C0 /* MVRoute.m */; };
 		0C1D9ECC18A01371001EF7C0 /* MVLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D9ECB18A01371001EF7C0 /* MVLocation.m */; };
+		0C1D9ECE18A2EA1C001EF7C0 /* EntranceToGoliathRoute.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C1D9ECD18A2EA1C001EF7C0 /* EntranceToGoliathRoute.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		0C1D9EC6189D7CEA001EF7C0 /* MVRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVRoute.m; sourceTree = "<group>"; };
 		0C1D9ECA18A01371001EF7C0 /* MVLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVLocation.h; sourceTree = "<group>"; };
 		0C1D9ECB18A01371001EF7C0 /* MVLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVLocation.m; sourceTree = "<group>"; };
+		0C1D9ECD18A2EA1C001EF7C0 /* EntranceToGoliathRoute.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EntranceToGoliathRoute.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 		0C1D9E79189C1143001EF7C0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0C1D9ECD18A2EA1C001EF7C0 /* EntranceToGoliathRoute.plist */,
 				0C1D9EB7189C2252001EF7C0 /* list.png */,
 				0C1D9EB8189C2252001EF7C0 /* list@2x.png */,
 				0C1D9E7A189C1143001EF7C0 /* Flat Tracks-Info.plist */,
@@ -286,6 +289,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C1D9ECE18A2EA1C001EF7C0 /* EntranceToGoliathRoute.plist in Resources */,
 				0C1D9E89189C1143001EF7C0 /* Main_iPad.storyboard in Resources */,
 				0C1D9EB9189C2252001EF7C0 /* list.png in Resources */,
 				0C1D9E94189C1143001EF7C0 /* Images.xcassets in Resources */,
