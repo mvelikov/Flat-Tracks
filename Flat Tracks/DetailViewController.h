@@ -11,7 +11,7 @@
 #import "MVRoute.h"
 #import "MVPoint.h"
 
-@interface DetailViewController : UIViewController <UISplitViewControllerDelegate, CLLocationManagerDelegate>
+@interface DetailViewController : UIViewController <UISplitViewControllerDelegate, CLLocationManagerDelegate, MKMapViewDelegate>
 
 @property (strong, nonatomic) id detailItem;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
